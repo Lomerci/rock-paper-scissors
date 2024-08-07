@@ -1,6 +1,6 @@
 function getComputerChoice() {
-    const randomChoice = Math.floor(Math.random() * 3);
-    switch (randomChoice) {
+    const computerChoice = Math.floor(Math.random() * 3);
+    switch (computerChoice) {
         case 0:
             console.log("The computer picked rock");
             return "rock";
@@ -13,23 +13,47 @@ function getComputerChoice() {
     }
 }
 
-function getUserChoice() {
-    const userInput = prompt("Please pick rock, paper, or scissors");
-    if (userInput === null) {
+function getHumanChoice() {
+    const humanChoice = prompt("Please pick rock, paper, or scissors").toLowerCase();
+    if (humanChoice === null) {
         console.log("The prompt is cancelled");
         return null;
     }
-    const lowerCaseInput = userInput.toLowerCase();
     const validChoices = ["rock", "paper", "scissors"];
-    if (validChoices.includes(userInput)) {
-        alert(`You choose ${userInput}`);
-        return userInput;
+    if (validChoices.includes(humanChoice)) {
+        alert(`You choose ${humanChoice}`);
+        console.log(`You choose ${humanChoice}`);
+        return humanChoice;
     } 
     else {
         alert("Invalid input! Please enter rock, paper, or scissors.");
         console.log("Invalid input! Please enter rock, paper, or scissors");
-        return getUserChoice();
+        return getHumanChoice();
     }
 }
 
-getUserChoice();
+getHumanChoice();
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    
+    if (humanChoice === computerChoice) {
+        alert(`You both choose ${humanChoice} so it's a tie!`);
+        console.log(`You both choose ${humanChoice} so it's a tie!`);
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper") 
+    ) {
+        alert(`You wins! You choose ${humanChoice} and computer ${computerChoice}!`);
+        console.log(`You wins! You choose ${humanChoice} and computer ${computerChoice}!`);
+        humanScore++;
+    } else {
+        alert(`You loses! You choose ${humanChoice} and computer choose ${computerChoice}`);
+        console.log(`You loses! You choose ${humanChoice} and computer choose ${computerChoice}`);
+        computerScore++;
+    } 
+}
