@@ -48,12 +48,12 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper") 
     ) {
-        alert(`You wins! You choose ${humanChoice} and computer ${computerChoice}!`);
-        console.log(`You wins! You choose ${humanChoice} and computer ${computerChoice}!`);
+        alert(`You win! ${humanChoice} beats ${computerChoice}!`);
+        console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
         humanScore++;
     } else {
-        alert(`You loses! You choose ${humanChoice} and computer choose ${computerChoice}`);
-        console.log(`You loses! You choose ${humanChoice} and computer choose ${computerChoice}`);
+        alert(`You lose! ${computerChoice} beats ${humanChoice}!`);
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
         computerScore++;
     } 
 }
