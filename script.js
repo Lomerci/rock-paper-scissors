@@ -74,7 +74,7 @@ function playGame() {
             console.log(`It's a tie! Final score: Yours is ${humanScore} and computer got ${computerScore}.`);
         }
 
-        const playAgain = prompt("Do you want to play another round? Type Yes to play again or No to quit the game.");
+        const playAgain = prompt("Do you want to play another round? Type yes to play again or no to quit the game.");
         if (playAgain === "yes") {
             playGame();
         } else {
