@@ -14,16 +14,17 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    const humanChoice = prompt("Please pick rock, paper, or scissors.").toLowerCase();
+    const humanChoice = prompt("Please pick rock, paper, or scissors.") 
     if (humanChoice === null) {
         console.log("The prompt is cancelled.");
         return null;
     }
     const validChoices = ["rock", "paper", "scissors"];
-    if (validChoices.includes(humanChoice)) {
-        alert(`You choose ${humanChoice}`);
-        console.log(`You choose ${humanChoice}`);
-        return humanChoice;
+    const normalizedChoice = humanChoice.toLowerCase();
+    if (validChoices.includes(normalizedChoice)) {
+        alert(`You choose ${normalizedChoice}`);
+        console.log(`You choose ${normalizedChoice}`);
+        return normalizedChoice;
     } 
     else {
         alert("Invalid input! Please enter rock, paper, or scissors.");
@@ -38,7 +39,9 @@ function playGame() {
     let computerScore = 0;
 
     function playRound(humanChoice, computerChoice) {
-        humanChoice = humanChoice.toLowerCase();
+        if (humanChoice === null) {
+            return;
+        }
         
         if (humanChoice === computerChoice) {
             alert(`You both choose ${humanChoice} so it's a tie!`);
@@ -50,18 +53,29 @@ function playGame() {
         ) {
             alert(`You win! ${humanChoice} beats ${computerChoice}!`);
             console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
-            humanScore++;
+            return "human";
         } else {
             alert(`You lose! ${computerChoice} beats ${humanChoice}!`);
             console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
-            computerScore++;
+            return "computer";
         } 
     }
 
-        for (let i = 0; i <= 5; i++) {
+        for (let i = 0; i < 5; i++) {
            const humanSelection = getHumanChoice();
+           if (humanSelection === null) {
+            console.log("The user cancel the game.");
+            return;
+           }
            const computerSelection = getComputerChoice();
-           playRound(humanSelection, computerSelection);
+           const roundWinner = playRound(humanSelection, computerSelection);
+
+           if (roundWinner === "human"){
+            humanScore++;
+           } else if (roundWinner === "computer") {
+            computerScore++;
+           }
+
         }
         if (humanScore > computerScore) {
             alert(`Congrats, You won the game! Final score: Yours is ${humanScore} and computer got ${computerScore}.`);
@@ -75,7 +89,7 @@ function playGame() {
         }
 
         const playAgain = prompt("Do you want to play another round? Type yes to play again or no to quit the game.");
-        if (playAgain === "yes") {
+        if (playAgain && playAgain.toLowerCase() === "yes") {
             playGame();
         } else {
             alert("Thank you for playing!");
