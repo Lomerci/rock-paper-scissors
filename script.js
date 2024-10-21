@@ -61,7 +61,7 @@ function playGame() {
         } 
     }
 
-        for (let i = 0; i < 5; i++) {
+       /* for (let i = 0; i < 5; i++) {
            const humanSelection = getHumanChoice();
            if (humanSelection === null) {
             console.log("The user cancel the game.");
@@ -74,7 +74,7 @@ function playGame() {
             humanScore++;
            } else if (roundWinner === "computer") {
             computerScore++;
-           }
+           }*/
 
         }
         if (humanScore > computerScore) {

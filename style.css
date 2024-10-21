@@ -13,7 +13,7 @@ body {
     height: 100%;
     background: linear-gradient(45deg, #000080, #8b0000, #1a1a1a, #292b2c);
     background-size: 400%;
-    animation: neonBackground 15s infinite;
+    animation: neonBackground 10s infinite;
     z-index: -1;
 }
 
@@ -23,10 +23,12 @@ body {
     100% {background-position: 0% 50%;}
 }
 
-h1 {
-    color: white;  
-    display: flex;
-    justify-content: center;
+h1{
+    margin-bottom: 80px;
+}
+
+h2 {
+    margin-bottom: 60px;
 }
 
 .playBtn {
@@ -47,7 +49,7 @@ h1 {
     cursor: pointer;
 }
 
-#paper {
+#paper, #paper-bot {
     color: white;   
     text-shadow: 
     0 0 5px #ffffff,
@@ -55,6 +57,9 @@ h1 {
     0 0 20px #00ff00,
     0 0 40px #00ff00,
     0 0 80px #00ff00; 
+}
+
+#paper {
     cursor: pointer;
 }
 
@@ -70,7 +75,29 @@ h1 {
     cursor: pointer;
 }
 
-.button {
+#rock-bot {
+    color: white;   
+    text-shadow: 
+    0 0 5px #ffffff,
+    0 0 10px #0000ff,
+    0 0 20px #0000ff,
+    0 0 40px #0000ff,
+    0 0 80px #0000ff; 
+}
+
+#scissors-bot {
+    color: white;   
+    text-shadow: 
+    0 0 5px #ffffff,
+    0 0 10px #ff0000,
+    0 0 20px #ff0000,
+    0 0 40px #ff0000,
+    0 0 80px #ff0000;
+    transform: scaleX(-1) rotate(90deg); 
+}
+
+.button, .computer-container {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
